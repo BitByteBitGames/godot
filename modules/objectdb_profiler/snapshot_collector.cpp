@@ -36,6 +36,7 @@
 #include "core/os/time.h"
 #include "core/version.h"
 #include "scene/main/node.h"
+#include "scene/main/scene_tree.h"
 #include "scene/main/window.h"
 
 void SnapshotCollector::initialize() {
@@ -168,9 +169,9 @@ Error SnapshotCollector::parse_message(void *p_user, const String &p_msg, const 
 }
 
 String SnapshotCollector::get_godot_version_string() {
-	String hash = String(VERSION_HASH);
+	String hash = String(GODOT_VERSION_HASH);
 	if (hash.length() != 0) {
 		hash = " " + vformat("[%s]", hash.left(9));
 	}
-	return "v" VERSION_FULL_BUILD + hash;
+	return "v" GODOT_VERSION_FULL_BUILD + hash;
 }

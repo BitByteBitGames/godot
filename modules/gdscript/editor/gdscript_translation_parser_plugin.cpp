@@ -126,7 +126,7 @@ void GDScriptEditorTranslationParserPlugin::_add_id(const String &p_id, int p_li
 		return;
 	}
 
-	translations->push_back({ p_id, String(), String(), comment });
+	translations->push_back({ p_id, String(), String(), comment, itos(p_line) });
 }
 
 void GDScriptEditorTranslationParserPlugin::_add_id_ctx_plural(const Vector<String> &p_id_ctx_plural, int p_line) {
@@ -136,7 +136,7 @@ void GDScriptEditorTranslationParserPlugin::_add_id_ctx_plural(const Vector<Stri
 		return;
 	}
 
-	translations->push_back({ p_id_ctx_plural[0], p_id_ctx_plural[1], p_id_ctx_plural[2], comment });
+	translations->push_back({ p_id_ctx_plural[0], p_id_ctx_plural[1], p_id_ctx_plural[2], comment, itos(p_line) });
 }
 
 void GDScriptEditorTranslationParserPlugin::_traverse_class(const GDScriptParser::ClassNode *p_class) {
@@ -450,6 +450,7 @@ GDScriptEditorTranslationParserPlugin::GDScriptEditorTranslationParserPlugin() {
 	first_arg_patterns.insert("add_radio_check_item");
 	first_arg_patterns.insert("add_separator");
 	first_arg_patterns.insert("add_submenu_item");
+	first_arg_patterns.insert("add_submenu_node_item");
 
 	second_arg_patterns.insert("set_tab_title");
 	second_arg_patterns.insert("add_icon_check_item");
